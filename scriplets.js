@@ -1,38 +1,12 @@
-// *##+js(hello.js)
+// *##+js(hello)
 /// hello.js
 (function() {
     console.log('Hello scriplet!');    
 })();
 
-// https://github.com/uBlockOrigin/uAssets/issues/913
-/// disable-newtab-links.js
-(function() {
-    document.addEventListener('click', function(ev) {
-        var target = ev.target;
-        while ( target !== null ) {
-            if ( target.localName === 'a' && target.hasAttribute('target') ) {
-                ev.stopPropagation();
-                ev.preventDefault();
-                break;
-            }
-            target = target.parentNode;
-        }
-    });
-})();
-
-
+// facebook.com##+js(facebook-feeds-filter)
 /// facebook-feeds-filter.js
 (function() {
-    // Install/Setup:
-    // 1. Install the uBlock Origin browser extension to use this scriptlet.
-    // 2. In Settings/Advanced, tick the checkbox "I am an advanced user", click the "gears", that appears.
-    // 3. Add a link to the raw source of this file to: "userResourcesLocation", click "Apply changes".
-    // 4. On the "My filters" tab, add the below two filters, click "Apply changes".
-    // facebook.com##+js(facebook-feeds-filter)
-    // facebook.com##div[role="complementary"] div>span:has(h3[dir="auto"] span:has-text(Sponsored))
-    // Options to filter additional catagories:
-    // Example 1: facebook.com##+js(facebook-feeds-filter,engagement)
-    // Example 2: facebook.com##+js(facebook-feeds-filter,engagement|promotion)
     const categoriesToHide = '{{1}}';  // Optional argument to filter posts by their category
     const setOfCategoriesToHide = (( ) => {
         if ( categoriesToHide === '' || categoriesToHide === '{{1}}' ) { return new Set(); }

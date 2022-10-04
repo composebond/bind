@@ -1,3 +1,4 @@
+// *##+js(hello.js)
 /// hello.js
 (function() {
     console.log('Hello scriplet!');    
